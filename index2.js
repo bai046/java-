@@ -6,7 +6,7 @@ let stu = require('./controller/stuController')
 
 
 const app = express()
-const port = 3000
+const port = 3306
 
 app.get('/', (req, res) => {
     var content = JSON.stringify(req.query, null, 2);
