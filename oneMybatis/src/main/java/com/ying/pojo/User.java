@@ -1,9 +1,11 @@
 package com.ying.pojo;
-
+//实例
 public class User {
     private int id;
     private String name;
     private String pwd;
+
+//    fn+alt+insert快速构建
     public User() {
     }
     public User(int id, String name, String pwd) {

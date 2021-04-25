@@ -8,17 +8,16 @@
         <environment id="development">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
-                <property name="driver"
-                          value="com.mysql.jdbc.Driver"/>
+<!--                四个配置-->
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
                 <property name="url"
-                          value="jdbc:mysql://localhost:3306/mybatis?
-useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8"/>
+                          value="jdbc:mysql://localhost:3306/mybatis?useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8"/>
                 <property name="username" value="root"/>
                 <property name="password" value="gsy20010406hk"/>
             </dataSource>
         </environment>
     </environments>
-    <!--每一个Mapper.xml都需要在Mybatis核型配置文件中注册！-->
+    <!--每一个Mapper.xml都需要在Mybatis核型配置文件中注册！映射-->
     <mappers>
     <mapper resource="com/ying/dao/UserMapper.xml"></mapper>
     </mappers>
