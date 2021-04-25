@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/oneMybatis.iml" filepath="$PROJECT_DIR$/.idea/oneMybatis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/java-idea.iml" filepath="$PROJECT_DIR$/.idea/java-idea.iml" />
     </modules>
   </component>
 </project>
