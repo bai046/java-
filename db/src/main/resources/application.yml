@@ -1,0 +1,50 @@
+spring:
+  datasource:
+    #根据MySQL版本配置驱动类5.x----8.x 驱动类“com.mysql.jdbc.Driver” 或 “com.mysql.cj.jdbc.Driver”。
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #useSSL：SSL协议提供服务主要作用：（不建议在没有服务器身份验证的情况下建立SSL连接。）
+    #   1）认证用户服务器，确保数据发送到正确的服务器； 　　 .
+    #   2）加密数据，防止数据传输途中被窃取使用；
+    #   3）维护数据完整性，验证数据在传输过程中是否丢失；
+    #serverTimezone：设置时区，不设置会报错。GMT%2B8：东八区北京时间  Asia/Shanghai：上海时间
+    #useServerPrepStmts：在url中给出useServerPrepStmts=true参数，开启预编译（默认PS是关闭的）
+    #allowMultiQueries：设置为true，开启批量执行sql的开关。更多请持续关注博主文档
+    url: jdbc:mysql://localhost:3306/user_test?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      #   配置监控统计拦截的filters，stat:监控统计、Log4j:日志记录、wall:防御sql注入
+      maxPoolPreparedStatementPerConnectionSize: 20
+      useGlobalDataSourceStat: true
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+      # 监控后台的配置，如登录账号和密码等
+      monitor:
+        allow: 127.0.0.1
+        loginUsername: admin
+        loginPassword: admin
+      # StatViewServlet配置，说明请参考Druid Wiki，配置_StatViewServlet配置
+      #是否启用StatViewServlet（监控页面）默认值为false（考虑到安全问题默认并未启动，如需启用建议设置密码或白名单以保障安全）
+      stat-view-servlet:
+        enabled: true
+        login-password: root
+        login-username: 123456
+        allow: 127.0.0.1
+        url-pattern: /druid/*
+      filters: stat,wall
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
