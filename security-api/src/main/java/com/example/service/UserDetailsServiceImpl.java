@@ -29,7 +29,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		// 获取数据库角色信息
 		List<Role> roleList = userRoleService.getRolesByUserId(user.getId());
 		// 权限列表
-		List<GrantedAuthority> list = new ArrayList<>();
+		List<GrantedAuthority> list = new ArrayList<GrantedAuthority>();
 		for (Role role : roleList) {
 			GrantedAuthority authority = new SimpleGrantedAuthority(role.getName());
 			list.add(authority);

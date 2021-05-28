@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public String[] testException(boolean isThrow) {
 		if (isThrow) {
-			throw new ResponseException(Error.USER_ACCOUNT_EXPIRED);
+			throw new ResponseException(Error.USER_ACCOUNT_DISABLE);
 		}
 		return new String[]{"data1", "data2", "正常", "恭喜，无异常"};
 	}

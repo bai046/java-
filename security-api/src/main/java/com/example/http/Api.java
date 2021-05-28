@@ -17,6 +17,10 @@ public class Api {
 		return new Response<T>(false, error);
 	}
 	
+	public static <T> Response<T> failure(int code, String msg) {
+		return new Response<T>(code, msg, null);
+	}
+	
 	public static <T> Response<T> failure(Error error, T data) {
 		return new Response<T>(false, error, data);
 	}

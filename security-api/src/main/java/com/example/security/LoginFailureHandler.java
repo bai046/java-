@@ -19,6 +19,6 @@ public class LoginFailureHandler implements AuthenticationFailureHandler {
 	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
 			AuthenticationException e) throws IOException, ServletException {
 		response.setContentType("application/json;charset=utf-8");
-		response.getWriter().write(JsonUtils.toJSONString(Api.failure(Error.USER_NO_PERMISSION)));
+		response.getWriter().write(JsonUtils.toJSONString(Api.failure(Error.USER_CREDENTIALS_ERROR)));
 	}
 }

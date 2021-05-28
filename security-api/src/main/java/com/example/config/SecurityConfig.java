@@ -1,6 +1,5 @@
 package com.example.config;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -8,12 +7,11 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 
 import com.example.security.LoginFailureHandler;
 import com.example.security.LoginSuccessHandler;
 import com.example.security.LogoutHandler;
+import com.example.util.PasswordUtils;
 
 /**
  * 安全配置
@@ -38,8 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	 */
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		PasswordEncoder encoder = new Pbkdf2PasswordEncoder(this.secret);
-		auth.userDetailsService(userDetailsService).passwordEncoder(encoder);
+		auth.userDetailsService(userDetailsService).passwordEncoder(PasswordUtils.getPasswordEncoder(this.secret));
 	}
 	
 	/**
@@ -49,7 +46,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
-		.cors().and()
+		.cors()
+		.and()
+		//.csrf().disable()
 		.authorizeRequests()
     .antMatchers("/user/**").hasAnyRole("USER", "ADMIN")
     .antMatchers("/admin/**").hasRole("ADMIN")

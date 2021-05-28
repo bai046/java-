@@ -52,7 +52,7 @@ public enum Error {
 	}
 
 	/**
-	 * 根据code获取msg
+	 * 获取code对应的消息
 	 * @param code
 	 * @return
 	 */

@@ -1,8 +1,10 @@
 package com.example.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,9 +12,13 @@ import com.example.http.Response;
 import com.example.http.Api;
 import com.example.http.Error;
 import com.example.service.UserService;
+import com.example.util.PasswordUtils;
 
 @RestController
 public class UserController extends BaseController {
+	
+		@Value("${myapp.user.password.secret}")
+		private String secret;
 	
 	  @Autowired
 	  private UserService userService;
@@ -36,6 +42,11 @@ public class UserController extends BaseController {
     public Response<CsrfToken> csrf(CsrfToken token) {
     	return Api.success(token);
     }
+    
+    @GetMapping("/encode/{password}")
+  	public Response<String> encode(@PathVariable("password") String password) {
+  		return Api.success(PasswordUtils.getCryptPassword(password, this.secret));
+  	}
     
     @GetMapping("/exception")
     public Response<Object> testException(
