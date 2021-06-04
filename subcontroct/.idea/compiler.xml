@@ -7,11 +7,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="rear" />
         <module name="FB" />
         <module name="subcontroct" />
-        <module name="rear" />
-        <module name="aop-aspectj" />
         <module name="spring-mybatis" />
+        <module name="aop-aspectj" />
       </profile>
     </annotationProcessing>
   </component>

@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>拦截器测试</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+  <p style="color:#00f">你如果看到了我，恭喜你：说明你的请求不在拦截器的规则范围之内</p>
+  <div class="alert alert-success" th:if="${elapsedTime != null}">
+      <span style="color:#f00" th:text="'Elapsed time: ' + ${elapsedTime} + ' ms'"></span>
+    </div>
+</body>
+</html>
