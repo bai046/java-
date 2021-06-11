@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>登出</title>
+</head>
+<body>
+	<form action="/logout" method="post">
+		<p>
+			<input type="submit" value="登出">
+		</p>
+		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+	</form>
+</body>
+</html>
