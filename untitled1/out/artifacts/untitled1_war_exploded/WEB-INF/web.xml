@@ -4,5 +4,42 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
+    <!--1. 默认的选择项-->
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>default.html</welcome-file>
+        <welcome-file>default.jsp</welcome-file>
+    </welcome-file-list>
 
+    <!--2. 配置 /* 拦截所有请求-->
+    <servlet>
+        <servlet-name>PatterServlet</servlet-name>
+        <servlet-class>cn.gsy.patter.PatterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PatterServlet</servlet-name>
+        <url-pattern>/pattern/*</url-pattern>
+    </servlet-mapping>
+
+    <!-- 3.全局配置 -->
+    <context-param>
+        <param-name>copyright</param-name>
+        <param-value>©你可以没有爱情,但是不能不学习,修的是无情道,上岸先斩意中人</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>title</param-name>
+        <param-value>清晨的粥,哪有深夜的海鲜好吃啊....</param-value>
+    </context-param>
+
+    <!--4. 指定错误页面 -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error/404.html</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/error/500.html</location>
+    </error-page>
 </web-app>
